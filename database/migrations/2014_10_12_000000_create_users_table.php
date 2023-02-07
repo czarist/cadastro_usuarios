@@ -21,12 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('CPF')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone');
             $table->unsignedSmallInteger('role')->default(1);
             $table->rememberToken();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        
         });
     }
 

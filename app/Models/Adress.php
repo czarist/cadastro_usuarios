@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adress extends Model
 {
+    protected $table = "adress";
+
+    protected $fillable = [
+        'logradouro', 'numero', 'bairro', 'complemento', 'cep'
+    ];
 
     public function user()
     {

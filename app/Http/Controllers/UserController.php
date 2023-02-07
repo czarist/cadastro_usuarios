@@ -46,11 +46,10 @@ class UserController extends Controller
                 $user->cpf = $request['cpf'];
                 $user->phone = $request['phone'];
                 $user->password = bcrypt($request['password']);
-                $user->user_id = auth()->id();
             }
         }
         $user->save();
-        return response()->json(['success' => 'User Registered Successfully']);
+        return response()->json(['success' => 'Usuário registrado com sucesso']);
     }
 
 
