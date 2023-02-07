@@ -81,6 +81,7 @@ class UserController extends Controller
                 return response()->json(['exists' => 'CPF já cadastrado']);
             } else {
                 $user = new User;
+                $user->name = 'default';
                 $user->fname = $request['fname'];
                 $user->lname = $request['lname'];
                 $user->email = $request['email'];

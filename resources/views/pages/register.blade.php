@@ -107,6 +107,7 @@
                             $('[name="email"]').val('');
                             $('[name="cpf"]').val('');
                             $('[name="password"]').val('');
+                            window.location.replace('/login')
                         } else {
                             $('#notifDiv').fadeIn();
                             $('#notifDiv').css('background', 'red');

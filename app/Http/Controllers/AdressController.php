@@ -15,18 +15,19 @@ class AdressController extends Controller
 {
     public function endereco($id)
     {
-        $endereco = Adress::where('user_id', $id)->get();
-        //->toArray()[0]
         $loggedRoleUser = Auth::user()->toArray()['role'];
 
         if (Auth::user()->id == $id || $loggedRoleUser == '4') {
+
+            $endereco = Adress::where('user_id', $id)->get();
+            //->toArray()[0]
 
             if (empty($endereco->toArray())) {
                 $endereco = "";
             } else {
                 $endereco = $endereco->toArray()[0];
             }
-            return view('pages.registerAdress', compact('endereco'));
+            return view('pages.registerAdress', compact('endereco', 'id'));
         } else {
             return redirect('/');
         }
@@ -40,7 +41,7 @@ class AdressController extends Controller
         $address->bairro = $request['bairro'];
         $address->complemento = $request['complemento'];
         $address->cep = $request['cep'];
-        $address->user_id = auth()->id();
+        $address->user_id = $request['user_id'];
 
         $address->save();
         return response()->json(['success' => 'Endereço registrado com sucesso!']);
@@ -54,7 +55,7 @@ class AdressController extends Controller
         $address->bairro = $request['bairro'];
         $address->complemento = $request['complemento'];
         $address->cep = $request['cep'];
-        $address->user_id = auth()->id();
+        $address->user_id = $request['user_id'];
 
         $address->save();
         return response()->json(['success' => 'Endereço atualizado com sucesso!']);
