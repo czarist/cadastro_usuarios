@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'role' => 4,
             'cpf' => '59323342238',
-            'phone' => '00000',
+            'phone' => '(51) 98659-3952',
             'password' => Hash::make('admin@123')
         ]);
 
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'czartrentin@gmail.com',
             'role' => 1,
             'cpf' => '83220775489',
-            'phone' => '00000',
+            'phone' => '(51) 98659-3952',
             'password' => Hash::make('admin@123')
         ]);
 
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'manoelgomes@gmail.com',
             'role' => 1,
             'cpf' => '50657574295',
-            'phone' => '00000',
+            'phone' => '(51) 98659-3952',
             'password' => Hash::make('admin@123')
         ]);
 
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'cigarro@gmail.com',
             'role' => 1,
             'cpf' => '20206856636',
-            'phone' => '00000',
+            'phone' => '(51) 98659-3952',
             'password' => Hash::make('admin@123')
         ]);
 
