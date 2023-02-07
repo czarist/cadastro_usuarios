@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth.user'], function () {
     //user register
     Route::post('/update_register', [App\Http\Controllers\UserController::class, 'update_register'])->name('update_register');
     Route::post('/delete_user', [App\Http\Controllers\UserController::class, 'delete_user'])->name('delete_user');
-    Route::get('/dados', [App\Http\Controllers\UserController::class, 'dados']);
+    Route::get('/dados/{id}', [App\Http\Controllers\UserController::class, 'dados']);
 });
 
 //user login

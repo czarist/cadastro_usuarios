@@ -1,4 +1,5 @@
 <!-- Navbar -->
+
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -14,14 +15,15 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown mr-3">
                     <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <i class="fas fa-user"></i> Bem Vindo
+                        <i class="fas fa-user"></i> Bem Vindo {{Auth::user()->toArray()['fname']}}
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ route('endereco', ['id' => Auth::user()->id]) }}" class="dropdown-item"><i
                                 class="fas fa-user-circle"></i> Meu
                             Endereço
                         </a>
-                        <a href="{{ url('dados') }}" class="dropdown-item"><i class="fas fa-cog"></i> Meus Dados
+                        <a href="{{ url('dados') }}/{{ Auth::user()->id }}" class="dropdown-item"><i
+                                class="fas fa-cog"></i> Meus Dados
                         </a>
                     </div>
                 </li>

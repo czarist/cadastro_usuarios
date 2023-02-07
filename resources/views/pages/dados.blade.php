@@ -13,6 +13,7 @@
                         <div class="card-body">
                             <form>
                                 @csrf
+                                <input type="hidden" name="id" id="id" value="{{ $id }}">
                                 <div class="form-group">
                                     <label for="fname">Primeiro Nome</label>
                                     <input disabled type="text" name="fname" id="fname" class="form-control"
@@ -68,6 +69,7 @@
                 var email = $("#email").val();
                 var phone = $("#phone").val();
                 var password = $("#password").val();
+                var id = $("#id").val()
 
                 $.ajax({
                     type: 'post',
@@ -76,7 +78,8 @@
                         '_token': '<?= csrf_token() ?>',
                         email: email,
                         phone: phone,
-                        password: password
+                        password: password,
+                        id: id
                     },
                     success: function(data) {
                         if (data.exists) {

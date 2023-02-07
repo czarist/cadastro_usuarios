@@ -15,12 +15,18 @@ class UserController extends Controller
 {
     public function login()
     {
-        return view('pages.login');
+        if (!Auth::check()) {
+            return view('pages.login');
+        } else
+            return redirect('/');
     }
 
     public function register()
     {
-        return view('pages.register');
+        if (!Auth::check()) {
+            return view('pages.register');
+        } else
+            return redirect('/');
     }
 
     public function dashboard()
@@ -30,11 +36,36 @@ class UserController extends Controller
         return view('dashboard', compact('users'));
     }
 
-    public function dados()
+    public function dados($id)
     {
-        $user = User::where('id', auth()->id())->get()->toArray()[0];
+        $user = User::where('id', $id)->get()->toArray()[0];
+        $loggedRoleUser = Auth::user()->toArray()['role'];
 
-        return view('pages.dados', compact('user'));
+        if (Auth::user()->id == $id || $loggedRoleUser == '4') {
+            return view('pages.dados', compact('user', 'id'));
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function update_register(Request $request)
+    {
+        $user = User::find($request['id']);
+
+        if ($request['email'] !== '') {
+            $user->email = $request['email'];
+        }
+
+        if ($request['phone'] !== '') {
+            $user->phone = $request['phone'];
+        }
+
+        if ($request['password'] !== '') {
+            $user->password = bcrypt($request['password']);
+        }
+
+        $user->save();
+        return response()->json(['success' => 'Dados atualizados com sucesso!']);
     }
 
     public function save_register(Request $request)
@@ -63,29 +94,7 @@ class UserController extends Controller
     }
 
 
-    public function update_register(Request $request)
-    {
-        $user = User::find(auth()->id());
 
-        if ($request['email'] !== '') {
-            $user->email = $request['email'];
-        }
-
-        if ($request['phone'] !== '') {
-            $user->phone = $request['phone'];
-        }
-
-        if ($request['password'] !== '') {
-            $user->password = bcrypt($request['password']);
-        }
-
-        //$user->email = $request['email'];
-        //$user->phone = $request['phone'];
-        //$user->password = bcrypt($request['password']);
-
-        $user->save();
-        return response()->json(['success' => 'Dados atualizados com sucesso!']);
-    }
 
     public function delete_user(Request $request)
     {

@@ -49,6 +49,8 @@
 
                                 <button type="submit" class="btn btn-dark btn-block" id="save_form">Registrar</button>
                             </form>
+                            <a class="btn btn-dark btn-block mt-5" href="{{ url('login') }}">Já Tenho Cadastro</a>
+
                         </div>
                     </div>
                 </div>

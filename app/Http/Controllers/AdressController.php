@@ -17,13 +17,19 @@ class AdressController extends Controller
     {
         $endereco = Adress::where('user_id', $id)->get();
         //->toArray()[0]
+        $loggedRoleUser = Auth::user()->toArray()['role'];
 
-        if (empty($endereco->toArray())) {
-            $endereco = "";
+        if (Auth::user()->id == $id || $loggedRoleUser == '4') {
+
+            if (empty($endereco->toArray())) {
+                $endereco = "";
+            } else {
+                $endereco = $endereco->toArray()[0];
+            }
+            return view('pages.registerAdress', compact('endereco'));
         } else {
-            $endereco = $endereco->toArray()[0];
+            return redirect('/');
         }
-        return view('pages.registerAdress', compact('endereco'));
     }
 
     public function save_adress(Request $request)

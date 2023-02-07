@@ -30,13 +30,19 @@
                                 <td>{{ $user['email'] }}</td>
                                 <td>{{ $user['phone'] }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="window.location.replace('{{ route('endereco', ['id' => $user['id']]) }}');">
-                                        <i class="fas fa-edit white"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger deletUser" value="{{ $user['id'] }}">
-                                        <i class="fa fa-trash white" aria-hidden="true"></i>
-                                    </button>
+                                    @if (Auth::user()->toArray()['role'] == 4)
+                                        <button type="button" class="btn btn-success"
+                                            onclick="window.location.replace('{{ route('endereco', ['id' => $user['id']]) }}');">
+                                            <i class="fas fa-home white"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-primary"
+                                            onclick="window.location.replace('{{ url('dados') }}/{{ $user['id'] }}');">
+                                            <i class="fas fa-edit white"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger deletUser" value="{{ $user['id'] }}">
+                                            <i class="fa fa-trash white" aria-hidden="true"></i>
+                                        </button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
