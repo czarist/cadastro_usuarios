@@ -11,7 +11,7 @@
                         @csrf
                         <h2 class="text-center bg-dark p-2 text-white">Cadastrar Endereço</h2>
                         <input type="hidden" id="url" name="url"
-                            value="{{ isset($endereco) ? 'update_adress' : 'save_adress' }}">
+                            value="{{ isset($endereco['logradouro']) ? '/update_adress' : '/save_adress' }}">
 
                         <div class="form-group">
                             <label for="logradouro">Logradouro</label>

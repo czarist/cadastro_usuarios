@@ -21,7 +21,7 @@
                                 class="fas fa-user-circle"></i> Meu
                             Endereço
                         </a>
-                        <a href="" class="dropdown-item"><i class="fas fa-cog"></i> Endereços
+                        <a href="{{ url('dados') }}" class="dropdown-item"><i class="fas fa-cog"></i> Meus Dados
                         </a>
                     </div>
                 </li>

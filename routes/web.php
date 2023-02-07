@@ -30,8 +30,10 @@ Route::post('/user_login', [App\Http\Controllers\UserController::class, 'user_lo
 
 //user register
 Route::get('/register', [App\Http\Controllers\UserController::class, 'register']);
+Route::get('/dados', [App\Http\Controllers\UserController::class, 'dados']);
 Route::post('/save_register', [App\Http\Controllers\UserController::class, 'save_register'])->name('save_user');
+Route::post('/update_register', [App\Http\Controllers\UserController::class, 'update_register'])->name('update_register');
 
 // adress register
 Route::post('/save_adress', [App\Http\Controllers\AdressController::class, 'save_adress'])->name('save_adress');
-Route::put('/update_adress', [App\Http\Controllers\AdressController::class, 'update_adress'])->name('update_adress');
+Route::post('/update_adress', [App\Http\Controllers\AdressController::class, 'update_adress'])->name('update_adress');

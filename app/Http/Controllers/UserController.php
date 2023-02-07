@@ -9,6 +9,7 @@ use App\Models\Business;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Pusher\Pusher;
+use Illuminate\Database\Eloquent\Model;
 
 class UserController extends Controller
 {
@@ -25,6 +26,13 @@ class UserController extends Controller
     public function dashboard()
     {
         return view('dashboard');
+    }
+
+    public function dados()
+    {
+        $user = User::where('id', auth()->id())->get()->toArray()[0];
+
+        return view('pages.dados', compact('user'));
     }
 
     public function save_register(Request $request)
@@ -52,6 +60,30 @@ class UserController extends Controller
         return response()->json(['success' => 'Usuário registrado com sucesso']);
     }
 
+
+    public function update_register(Request $request)
+    {
+        $user = User::find(auth()->id());
+
+        if ($request['email'] !== '') {
+            $user->email = $request['email'];
+        }
+
+        if ($request['phone'] !== '') {
+            $user->phone = $request['phone'];
+        }
+
+        if ($request['password'] !== '') {
+            $user->password = bcrypt($request['password']);
+        }
+
+        //$user->email = $request['email'];
+        //$user->phone = $request['phone'];
+        //$user->password = bcrypt($request['password']);
+
+        $user->save();
+        return response()->json(['success' => 'Dados atualizados com sucesso!']);
+    }
 
 
 
