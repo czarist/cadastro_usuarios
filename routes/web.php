@@ -22,6 +22,13 @@ Route::group(['middleware' => 'auth.user'], function () {
     Route::get('/', [App\Http\Controllers\UserController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
     Route::get('/endereco/{id}', [App\Http\Controllers\AdressController::class, 'endereco'])->name('endereco');
+    // adress register
+    Route::post('/save_adress', [App\Http\Controllers\AdressController::class, 'save_adress'])->name('save_adress');
+    Route::post('/update_adress', [App\Http\Controllers\AdressController::class, 'update_adress'])->name('update_adress');
+    //user register
+    Route::post('/update_register', [App\Http\Controllers\UserController::class, 'update_register'])->name('update_register');
+    Route::post('/delete_user', [App\Http\Controllers\UserController::class, 'delete_user'])->name('delete_user');
+    Route::get('/dados', [App\Http\Controllers\UserController::class, 'dados']);
 });
 
 //user login
@@ -30,10 +37,4 @@ Route::post('/user_login', [App\Http\Controllers\UserController::class, 'user_lo
 
 //user register
 Route::get('/register', [App\Http\Controllers\UserController::class, 'register']);
-Route::get('/dados', [App\Http\Controllers\UserController::class, 'dados']);
 Route::post('/save_register', [App\Http\Controllers\UserController::class, 'save_register'])->name('save_user');
-Route::post('/update_register', [App\Http\Controllers\UserController::class, 'update_register'])->name('update_register');
-
-// adress register
-Route::post('/save_adress', [App\Http\Controllers\AdressController::class, 'save_adress'])->name('save_adress');
-Route::post('/update_adress', [App\Http\Controllers\AdressController::class, 'update_adress'])->name('update_adress');

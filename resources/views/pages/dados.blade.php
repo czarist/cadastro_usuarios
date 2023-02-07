@@ -49,7 +49,8 @@
                                         placeholder="**************************">
                                 </div>
 
-                                <button type="submit" class="btn btn-dark btn-block" id="save_form">ATUALIZAR DADOS</button>
+                                <button type="submit" class="btn btn-dark btn-block" id="save_form">ATUALIZAR
+                                    DADOS</button>
                             </form>
                         </div>
                     </div>
@@ -58,10 +59,6 @@
         </div>
     </section>
 @endsection
-
-
-
-
 
 @push('javascript')
     <script>

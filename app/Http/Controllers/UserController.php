@@ -25,7 +25,9 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $users = User::all()->toArray();
+
+        return view('dashboard', compact('users'));
     }
 
     public function dados()
@@ -85,6 +87,16 @@ class UserController extends Controller
         return response()->json(['success' => 'Dados atualizados com sucesso!']);
     }
 
+    public function delete_user(Request $request)
+    {
+        $user = User::where('id', $request['id'])->first();
+        if ($user) {
+            $user->delete();
+            return response()->json(['success' => 'Usuário excluído com sucesso']);
+        } else {
+            return response()->json(['error' => 'Usuário não encontrado']);
+        }
+    }
 
 
     public function user_login(Request $request)
